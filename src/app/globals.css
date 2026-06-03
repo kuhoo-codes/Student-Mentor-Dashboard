@@ -1,13 +1,3 @@
-:root {
-  color-scheme: light;
-  --background: #f6f7f9;
-  --foreground: #18202f;
-  --muted: #5f6b7a;
-  --border: #d9dee7;
-  --panel: #ffffff;
-  --accent: #2563eb;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -15,57 +5,56 @@
 html,
 body {
   margin: 0;
-  min-height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+  background: #f6f7f9;
+  color: #18202f;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 button {
   font: inherit;
 }
 
-.dashboard-page {
+.page {
   margin: 0 auto;
-  max-width: 1100px;
-  padding: 48px 24px;
+  max-width: 1050px;
+  padding: 40px 20px;
 }
 
-.dashboard-header {
-  margin-bottom: 28px;
+.header {
+  margin-bottom: 24px;
 }
 
-.dashboard-header h1 {
-  font-size: 2.25rem;
-  line-height: 1.15;
-  margin: 0 0 10px;
+.header h1 {
+  font-size: 2rem;
+  margin: 0 0 8px;
 }
 
-.dashboard-header p {
-  color: var(--muted);
-  line-height: 1.6;
+.header p,
+.card p,
+li {
+  color: #5f6b7a;
+  line-height: 1.5;
+}
+
+.header p,
+.card p {
   margin: 0;
-  max-width: 680px;
 }
 
-.dashboard-grid {
-  align-items: start;
+.layout {
   display: grid;
   gap: 20px;
-  grid-template-columns: 360px minmax(0, 1fr);
+  grid-template-columns: 340px 1fr;
 }
 
 .card {
-  background: var(--panel);
-  border: 1px solid var(--border);
+  background: #ffffff;
+  border: 1px solid #d9dee7;
   border-radius: 8px;
-  padding: 24px;
+  padding: 20px;
 }
 
 .card h2,
@@ -81,46 +70,39 @@ button {
   font-size: 0.95rem;
 }
 
-.card p {
-  color: var(--muted);
-  line-height: 1.5;
-  margin: 0;
-}
-
 .project-list {
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 
-.project-list-item {
+.project-button {
   background: #ffffff;
-  border: 1px solid var(--border);
+  border: 1px solid #d9dee7;
   border-radius: 8px;
   color: inherit;
   cursor: pointer;
-  padding: 16px;
+  padding: 14px;
   text-align: left;
   width: 100%;
 }
 
-.project-list-item:hover,
-.project-list-item:focus-visible {
-  border-color: var(--accent);
+.project-button:hover,
+.project-button:focus-visible,
+.project-button.selected {
+  border-color: #2563eb;
 }
 
-.project-list-item:focus-visible,
+.project-button:focus-visible,
 .report-button:focus-visible {
   outline: 3px solid #bfdbfe;
   outline-offset: 2px;
 }
 
-.project-list-item--selected {
+.project-button.selected {
   background: #f7fbff;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent);
 }
 
-.project-list-item-header,
+.project-row,
 .detail-header {
   align-items: flex-start;
   display: flex;
@@ -128,46 +110,33 @@ button {
   justify-content: space-between;
 }
 
-.project-list-item h3 {
+.project-row h3 {
   font-size: 1rem;
   margin: 0 0 4px;
 }
 
-.project-list-item .progress-group {
-  margin-top: 14px;
-}
-
 .detail-header {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
-.detail-label {
-  color: var(--muted);
-  font-size: 0.9rem;
+.student-name {
   font-weight: 700;
-  margin-bottom: 4px;
 }
 
-.detail-section {
-  border-top: 1px solid var(--border);
-  margin-top: 18px;
-  padding-top: 18px;
+.section {
+  border-top: 1px solid #d9dee7;
+  margin-top: 16px;
+  padding-top: 16px;
 }
 
-.next-actions-list {
-  color: var(--muted);
-  line-height: 1.5;
+ul {
   margin: 0;
   padding-left: 20px;
 }
 
-.next-actions-list li + li {
-  margin-top: 6px;
-}
-
 .health-badge {
   border-radius: 999px;
-  display: inline-flex;
+  display: inline-block;
   font-size: 0.85rem;
   font-weight: 700;
   padding: 5px 10px;
@@ -189,19 +158,20 @@ button {
   color: #991b1b;
 }
 
-.progress-group {
+.progress {
   display: grid;
   gap: 6px;
+  margin-top: 12px;
 }
 
 .progress-label {
-  color: var(--muted);
+  color: #5f6b7a;
   display: flex;
   font-size: 0.9rem;
   justify-content: space-between;
 }
 
-.progress-shell {
+.progress-track {
   background: #e8edf4;
   border-radius: 999px;
   height: 10px;
@@ -209,18 +179,17 @@ button {
 }
 
 .progress-fill {
-  background: var(--accent);
+  background: #2563eb;
   height: 100%;
 }
 
 .report-button {
-  background: var(--accent);
+  background: #2563eb;
   border: 0;
   border-radius: 8px;
   color: #ffffff;
   cursor: pointer;
   font-weight: 700;
-  min-height: 44px;
   padding: 12px 16px;
   width: 100%;
 }
@@ -229,32 +198,24 @@ button {
   background: #1d4ed8;
 }
 
-.parent-report {
+.report {
   background: #f8fafc;
-  border: 1px solid var(--border);
+  border: 1px solid #d9dee7;
   border-radius: 8px;
-  margin-top: 14px;
-  padding: 14px;
+  margin-top: 12px;
+  padding: 12px;
 }
 
 @media (max-width: 760px) {
-  .dashboard-page {
-    padding: 32px 16px;
+  .page {
+    padding: 28px 16px;
   }
 
-  .dashboard-header h1 {
-    font-size: 2rem;
-  }
-
-  .dashboard-grid {
+  .layout {
     grid-template-columns: 1fr;
   }
 
-  .card {
-    padding: 20px;
-  }
-
-  .project-list-item-header,
+  .project-row,
   .detail-header {
     flex-direction: column;
   }

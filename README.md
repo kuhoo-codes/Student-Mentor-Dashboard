@@ -1,15 +1,13 @@
 # Student Projects Dashboard
 
-## Overview
-
-A small Next.js assessment app that shows student projects, project details, and a simple parent report generated from mock data.
+Simple Next.js assessment app for reviewing student project progress.
 
 ## Features
 
-- Select a student project from a list.
-- View health status, progress, current milestone, and next actions.
-- Generate a short parent-friendly report for the selected project.
-- Clear the report when a different project is selected.
+- Select a student project.
+- View health, progress, current milestone, and next actions.
+- Generate a short parent report from the selected project.
+- Report clears when a different project is selected.
 
 ## Tech Stack
 
@@ -18,7 +16,7 @@ A small Next.js assessment app that shows student projects, project details, and
 - React `useState`
 - Plain CSS
 
-## Run Locally
+## Run
 
 ```bash
 npm install
@@ -29,4 +27,4 @@ Open `http://localhost:3000`.
 
 ## Notes
 
-All project data is local mock data in `src/data/projects.ts`. Parent report generation is a simple local string template, with no API calls, backend, or AI service.
+Project data is local mock data in `src/data/projects.ts`. Report generation is a local string template in `src/app/page.tsx`. There is no backend, API route, database, or AI service.
