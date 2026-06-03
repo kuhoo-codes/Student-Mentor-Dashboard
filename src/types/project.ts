@@ -12,7 +12,12 @@ export type StudentProject = {
 };
 
 export type ParentReport = {
-  projectId: StudentProject["id"];
+  projectId: string;
+  studentName: string;
+  projectTitle: string;
   summary: string;
+  progressNote: string;
+  milestoneNote: string;
+  nextSteps: string[];
   generatedAt: string;
 };

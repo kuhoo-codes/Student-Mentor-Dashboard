@@ -78,6 +78,7 @@ select {
   gap: 20px;
 }
 
+.dashboard-card,
 .placeholder-card {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -86,29 +87,228 @@ select {
   padding: 24px;
 }
 
+.dashboard-card h2,
+.dashboard-card h3,
 .placeholder-card h2,
 .placeholder-card h3 {
   font-size: 1rem;
   margin: 0 0 8px;
 }
 
+.dashboard-card p,
 .placeholder-card p {
   color: var(--muted);
   line-height: 1.5;
   margin: 0;
 }
 
+.project-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.project-list-item {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  padding: 16px;
+  text-align: left;
+  width: 100%;
+}
+
+.project-list-item:hover,
+.project-list-item:focus-visible {
+  border-color: var(--accent);
+}
+
+.project-list-item:focus-visible {
+  outline: 3px solid #bfdbfe;
+  outline-offset: 2px;
+}
+
+.project-list-item--selected {
+  background: #f7fbff;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.project-list-item-header,
+.detail-header {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.project-list-item h3 {
+  font-size: 0.98rem;
+  margin: 0 0 4px;
+}
+
+.project-list-item--selected h3 {
+  font-weight: 700;
+}
+
+.project-list-status {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.active-label {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.project-list-item .progress-group {
+  margin-top: 14px;
+}
+
+.detail-header {
+  margin-bottom: 16px;
+}
+
+.detail-header h2 {
+  font-size: 1.25rem;
+}
+
+.detail-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.project-description {
+  margin-bottom: 20px;
+}
+
+.detail-section {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  margin-top: 16px;
+}
+
+.detail-section h3 {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.next-actions-list {
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.report-panel {
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.report-preview {
+  min-height: auto;
+}
+
+.report-preview-header {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.generated-at,
+.report-disclaimer {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.report-summary-list {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+}
+
+.report-summary-list div {
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+.report-summary-list dt {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.report-summary-list dd {
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.report-disclaimer {
+  border-top: 1px solid var(--border);
+  margin-top: 18px;
+  padding-top: 14px;
+}
+
+.empty-state {
+  min-height: auto;
+}
+
+.health-badge,
 .placeholder-badge {
   align-items: center;
-  background: #eef4ff;
-  border: 1px solid #c7d8ff;
   border-radius: 999px;
-  color: #1d4ed8;
   display: inline-flex;
   font-size: 0.875rem;
   font-weight: 600;
   min-height: 32px;
   padding: 4px 12px;
+  white-space: nowrap;
+}
+
+.health-badge--on-track {
+  background: #e9f8ef;
+  border: 1px solid #b9e5c8;
+  color: #176534;
+}
+
+.health-badge--needs-attention {
+  background: #fff7e6;
+  border: 1px solid #f3d38b;
+  color: #92400e;
+}
+
+.health-badge--at-risk {
+  background: #fff0f0;
+  border: 1px solid #f0b4b4;
+  color: #b42318;
+}
+
+.placeholder-badge {
+  background: #eef4ff;
+  border: 1px solid #c7d8ff;
+  color: #1d4ed8;
+}
+
+.progress-group {
+  display: grid;
+  gap: 6px;
+}
+
+.progress-label {
+  color: var(--muted);
+  display: flex;
+  font-size: 0.875rem;
+  justify-content: space-between;
 }
 
 .progress-shell {
@@ -119,23 +319,21 @@ select {
   width: 100%;
 }
 
-.progress-shell::before {
+.progress-fill {
   background: var(--accent);
-  content: "";
-  display: block;
   height: 100%;
-  width: 40%;
 }
 
 .report-button {
-  background: #cbd5e1;
+  background: var(--accent);
   border: 0;
   border-radius: 8px;
-  color: #475569;
-  cursor: not-allowed;
+  color: #ffffff;
+  cursor: pointer;
   display: inline-flex;
   font-weight: 700;
   justify-content: center;
+  margin-top: 16px;
   min-height: 44px;
   padding: 12px 16px;
   width: 100%;
