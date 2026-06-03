@@ -27,16 +27,13 @@ body {
     sans-serif;
 }
 
-button,
-input,
-textarea,
-select {
+button {
   font: inherit;
 }
 
 .dashboard-page {
   margin: 0 auto;
-  max-width: 1120px;
+  max-width: 1100px;
   padding: 48px 24px;
 }
 
@@ -47,56 +44,44 @@ select {
 .dashboard-header h1 {
   font-size: 2.25rem;
   line-height: 1.15;
-  margin: 0 0 12px;
+  margin: 0 0 10px;
 }
 
 .dashboard-header p {
   color: var(--muted);
-  font-size: 1rem;
   line-height: 1.6;
   margin: 0;
-  max-width: 720px;
-}
-
-.eyebrow {
-  color: var(--accent);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0;
-  margin-bottom: 8px;
-  text-transform: uppercase;
+  max-width: 680px;
 }
 
 .dashboard-grid {
+  align-items: start;
   display: grid;
   gap: 20px;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  grid-template-columns: 360px minmax(0, 1fr);
 }
 
-.dashboard-detail-stack {
-  display: grid;
-  gap: 20px;
-}
-
-.dashboard-card,
-.placeholder-card {
+.card {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 8px;
-  min-height: 180px;
   padding: 24px;
 }
 
-.dashboard-card h2,
-.dashboard-card h3,
-.placeholder-card h2,
-.placeholder-card h3 {
-  font-size: 1rem;
-  margin: 0 0 8px;
+.card h2,
+.card h3 {
+  margin: 0 0 10px;
 }
 
-.dashboard-card p,
-.placeholder-card p {
+.card h2 {
+  font-size: 1.2rem;
+}
+
+.card h3 {
+  font-size: 0.95rem;
+}
+
+.card p {
   color: var(--muted);
   line-height: 1.5;
   margin: 0;
@@ -105,7 +90,6 @@ select {
 .project-list {
   display: grid;
   gap: 12px;
-  margin-top: 16px;
 }
 
 .project-list-item {
@@ -114,7 +98,6 @@ select {
   border-radius: 8px;
   color: inherit;
   cursor: pointer;
-  display: block;
   padding: 16px;
   text-align: left;
   width: 100%;
@@ -125,7 +108,8 @@ select {
   border-color: var(--accent);
 }
 
-.project-list-item:focus-visible {
+.project-list-item:focus-visible,
+.report-button:focus-visible {
   outline: 3px solid #bfdbfe;
   outline-offset: 2px;
 }
@@ -145,25 +129,8 @@ select {
 }
 
 .project-list-item h3 {
-  font-size: 0.98rem;
+  font-size: 1rem;
   margin: 0 0 4px;
-}
-
-.project-list-item--selected h3 {
-  font-weight: 700;
-}
-
-.project-list-status {
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.active-label {
-  color: var(--accent);
-  font-size: 0.75rem;
-  font-weight: 700;
 }
 
 .project-list-item .progress-group {
@@ -171,32 +138,20 @@ select {
 }
 
 .detail-header {
-  margin-bottom: 16px;
-}
-
-.detail-header h2 {
-  font-size: 1.25rem;
+  margin-bottom: 20px;
 }
 
 .detail-label {
-  font-size: 0.875rem;
+  color: var(--muted);
+  font-size: 0.9rem;
   font-weight: 700;
   margin-bottom: 4px;
 }
 
-.project-description {
-  margin-bottom: 20px;
-}
-
 .detail-section {
   border-top: 1px solid var(--border);
-  padding-top: 16px;
-  margin-top: 16px;
-}
-
-.detail-section h3 {
-  font-size: 0.9rem;
-  margin-bottom: 8px;
+  margin-top: 18px;
+  padding-top: 18px;
 }
 
 .next-actions-list {
@@ -206,97 +161,32 @@ select {
   padding-left: 20px;
 }
 
-.report-panel {
-  border-top: 1px solid var(--border);
-  margin-top: 20px;
-  padding-top: 20px;
+.next-actions-list li + li {
+  margin-top: 6px;
 }
 
-.report-preview {
-  min-height: auto;
-}
-
-.report-preview-header {
-  align-items: flex-start;
-  display: flex;
-  gap: 12px;
-  justify-content: space-between;
-  margin-bottom: 18px;
-}
-
-.generated-at,
-.report-disclaimer {
-  color: var(--muted);
-  font-size: 0.82rem;
-}
-
-.report-summary-list {
-  display: grid;
-  gap: 16px;
-  margin: 0;
-}
-
-.report-summary-list div {
-  border-top: 1px solid var(--border);
-  padding-top: 14px;
-}
-
-.report-summary-list dt {
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.report-summary-list dd {
-  color: var(--muted);
-  line-height: 1.5;
-  margin: 0;
-}
-
-.report-disclaimer {
-  border-top: 1px solid var(--border);
-  margin-top: 18px;
-  padding-top: 14px;
-}
-
-.empty-state {
-  min-height: auto;
-}
-
-.health-badge,
-.placeholder-badge {
-  align-items: center;
+.health-badge {
   border-radius: 999px;
   display: inline-flex;
-  font-size: 0.875rem;
-  font-weight: 600;
-  min-height: 32px;
-  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 5px 10px;
   white-space: nowrap;
 }
 
 .health-badge--on-track {
-  background: #e9f8ef;
-  border: 1px solid #b9e5c8;
-  color: #176534;
+  background: #e8f7ee;
+  color: #166534;
 }
 
 .health-badge--needs-attention {
-  background: #fff7e6;
-  border: 1px solid #f3d38b;
-  color: #92400e;
+  background: #fff7df;
+  color: #854d0e;
 }
 
 .health-badge--at-risk {
-  background: #fff0f0;
-  border: 1px solid #f0b4b4;
-  color: #b42318;
-}
-
-.placeholder-badge {
-  background: #eef4ff;
-  border: 1px solid #c7d8ff;
-  color: #1d4ed8;
+  background: #fff1f1;
+  color: #991b1b;
 }
 
 .progress-group {
@@ -307,16 +197,15 @@ select {
 .progress-label {
   color: var(--muted);
   display: flex;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   justify-content: space-between;
 }
 
 .progress-shell {
   background: #e8edf4;
   border-radius: 999px;
-  height: 12px;
+  height: 10px;
   overflow: hidden;
-  width: 100%;
 }
 
 .progress-fill {
@@ -330,13 +219,22 @@ select {
   border-radius: 8px;
   color: #ffffff;
   cursor: pointer;
-  display: inline-flex;
   font-weight: 700;
-  justify-content: center;
-  margin-top: 16px;
   min-height: 44px;
   padding: 12px 16px;
   width: 100%;
+}
+
+.report-button:hover {
+  background: #1d4ed8;
+}
+
+.parent-report {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 14px;
+  padding: 14px;
 }
 
 @media (max-width: 760px) {
@@ -344,7 +242,20 @@ select {
     padding: 32px 16px;
   }
 
+  .dashboard-header h1 {
+    font-size: 2rem;
+  }
+
   .dashboard-grid {
     grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .project-list-item-header,
+  .detail-header {
+    flex-direction: column;
   }
 }

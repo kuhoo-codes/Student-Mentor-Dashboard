@@ -1,37 +1,36 @@
-import { ParentReportButton } from "@/components/ParentReportButton";
 import { HealthBadge } from "@/components/HealthBadge";
 import { ProgressBar } from "@/components/ProgressBar";
-import type { ParentReport, StudentProject } from "@/types/project";
+import type { Project } from "@/types/project";
 
 type ProjectDetailCardProps = {
-  project: StudentProject;
-  onGenerateReport: (report: ParentReport) => void;
+  project: Project;
+  parentReport: string | null;
+  onGenerateReport: () => void;
 };
 
 export function ProjectDetailCard({
   project,
+  parentReport,
   onGenerateReport
 }: ProjectDetailCardProps) {
   return (
-    <section className="dashboard-card" aria-labelledby="project-detail-title">
+    <section className="card" aria-labelledby="project-detail-title">
       <div className="detail-header">
         <div>
           <p className="detail-label">{project.studentName}</p>
-          <h2 id="project-detail-title">{project.projectTitle}</h2>
+          <h2 id="project-detail-title">{project.title}</h2>
         </div>
-        <HealthBadge status={project.healthStatus} />
+        <HealthBadge health={project.health} />
       </div>
-
-      <p className="project-description">{project.description}</p>
 
       <div className="detail-section">
         <h3>Progress</h3>
-        <ProgressBar value={project.progressPercent} />
+        <ProgressBar value={project.progress} />
       </div>
 
       <div className="detail-section">
         <h3>Current Milestone</h3>
-        <p>{project.currentMilestone}</p>
+        <p>{project.milestone}</p>
       </div>
 
       <div className="detail-section">
@@ -43,10 +42,17 @@ export function ProjectDetailCard({
         </ul>
       </div>
 
-      <ParentReportButton
-        onGenerateReport={onGenerateReport}
-        project={project}
-      />
+      <div className="detail-section">
+        <h3>Parent Report</h3>
+        <button
+          className="report-button"
+          onClick={onGenerateReport}
+          type="button"
+        >
+          Generate Parent Report
+        </button>
+        {parentReport ? <p className="parent-report">{parentReport}</p> : null}
+      </div>
     </section>
   );
 }

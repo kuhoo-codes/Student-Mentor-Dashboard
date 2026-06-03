@@ -1,11 +1,11 @@
 import { HealthBadge } from "@/components/HealthBadge";
 import { ProgressBar } from "@/components/ProgressBar";
-import type { StudentProject } from "@/types/project";
+import type { Project } from "@/types/project";
 
 type ProjectListProps = {
-  projects: StudentProject[];
+  projects: Project[];
   selectedProjectId: string;
-  onSelectProject: (project: StudentProject) => void;
+  onSelectProject: (project: Project) => void;
 };
 
 export function ProjectList({
@@ -14,8 +14,8 @@ export function ProjectList({
   onSelectProject
 }: ProjectListProps) {
   return (
-    <section className="dashboard-card" aria-labelledby="project-list-title">
-      <h2 id="project-list-title">Project List</h2>
+    <section className="card" aria-labelledby="project-list-title">
+      <h2 id="project-list-title">Projects</h2>
       <div className="project-list">
         {projects.map((project) => {
           const isSelected = project.id === selectedProjectId;
@@ -32,17 +32,12 @@ export function ProjectList({
             >
               <div className="project-list-item-header">
                 <div>
-                  <h3>{project.projectTitle}</h3>
+                  <h3>{project.title}</h3>
                   <p>{project.studentName}</p>
                 </div>
-                <div className="project-list-status">
-                  {isSelected ? (
-                    <span className="active-label">Selected</span>
-                  ) : null}
-                  <HealthBadge status={project.healthStatus} />
-                </div>
+                <HealthBadge health={project.health} />
               </div>
-              <ProgressBar value={project.progressPercent} />
+              <ProgressBar value={project.progress} />
             </button>
           );
         })}

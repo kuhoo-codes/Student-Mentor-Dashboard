@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Student Projects Dashboard",
-  description: "Assessment dashboard shell for student project mentoring"
+  description: "Simple student project dashboard assessment"
 };
 
 export default function RootLayout({

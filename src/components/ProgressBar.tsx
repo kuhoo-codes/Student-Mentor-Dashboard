@@ -3,7 +3,8 @@ type ProgressBarProps = {
 };
 
 export function ProgressBar({ value }: ProgressBarProps) {
-  const clampedValue = Math.min(100, Math.max(0, value));
+  const safeValue = Number.isFinite(value) ? value : 0;
+  const clampedValue = Math.min(100, Math.max(0, safeValue));
 
   return (
     <div className="progress-group">
